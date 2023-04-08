@@ -16,18 +16,21 @@ public class ChangeMaterial : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         originalMaterial = meshRenderer.material;
+      
     }
 
     public void SetOtherMaterial()
     {
         usingOther = true;
         meshRenderer.material = otherMaterial;
+     
     }
 
     public void SetOriginalMaterial()
     {
         usingOther = false;
         meshRenderer.material = originalMaterial;
+       
     }
 
     public void ToggleMaterial()
