@@ -934,6 +934,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &1059117478
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059117462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1059117479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059117462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1001 &1159050727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1371,6 +1398,26 @@ PrefabInstance:
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305602, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305602, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305602, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305602, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4145850241661305603, guid: ba4d2e56bea0ec44981b1f4397921cc8,
         type: 3}
       propertyPath: otherMaterial
@@ -1388,6 +1435,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4145850241661305613, guid: ba4d2e56bea0ec44981b1f4397921cc8,
         type: 3}
+      propertyPath: m_Radius
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305613, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145850241661305613, guid: ba4d2e56bea0ec44981b1f4397921cc8,
+        type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
@@ -1398,6 +1455,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0e8c2c8718676024aa337b96a726f49b, type: 2}
     m_RemovedComponents:
     - {fileID: 4145850241661305603, guid: ba4d2e56bea0ec44981b1f4397921cc8, type: 3}
+    - {fileID: 4145850241661305613, guid: ba4d2e56bea0ec44981b1f4397921cc8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ba4d2e56bea0ec44981b1f4397921cc8, type: 3}
 --- !u!1 &1948541797
 GameObject:
