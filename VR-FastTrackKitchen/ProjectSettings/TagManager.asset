@@ -8,6 +8,7 @@ TagManager:
   - BurgerPatty
   - Fluid
   - RawBurgerPatty
+  - AI
   layers:
   - Default
   - TransparentFX
