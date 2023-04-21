@@ -15,7 +15,7 @@ public class CookBurgerPatty : MonoBehaviour
     float increment;
     public float burnTime = 5.0f;
     
-    
+  
 
     private AudioSource cookingSound;
     private Material material;

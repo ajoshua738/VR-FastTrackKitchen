@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25e3edcdaa2620429e1bb7a426244ae, type: 3}
+  m_Name: BurntPatty
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1437667002709626, guid: 4d5493d23a22b9d49b4007ecbd5d5226, type: 3}
+  indgredientName: Burnt Patty

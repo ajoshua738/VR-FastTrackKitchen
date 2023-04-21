@@ -15,10 +15,11 @@ public class BurgerPatty : MonoBehaviour
     private bool isCooked;
     private bool overcookingCoroutineStarted;
 
-    private XRGrabInteractable xrGrab;
+    private XRGrabInteractable xrGrabInteractable;
    
 
-    [SerializeField] private InteractionLayerMask cookedPatty;
+    [SerializeField] private InteractionLayerMask xrcookedPatty;
+   
     //Material lerping handling
     [SerializeField] private float cookTime = 10.0f;
     private float increment;
@@ -31,13 +32,15 @@ public class BurgerPatty : MonoBehaviour
     private Material material;
     private Renderer renderer;
 
-    [SerializeField] private GameObject indgredientSocket;
+    [SerializeField] private GameObject ingredientSocket;
+ 
 
     // Start is called before the first frame update
+ 
     void Start()
     {
      
-        indgredientSocket.SetActive(false);
+        ingredientSocket.SetActive(false);
         isCooking = false;
         cookingCoroutineStarted = false;
         isCooked = false;
@@ -48,7 +51,9 @@ public class BurgerPatty : MonoBehaviour
         material = renderer.material;
         //value to increment each second until burger is cooked
         increment = 1.0f / cookTime;
-        xrGrab = GetComponent<XRGrabInteractable>();
+        xrGrabInteractable = GetComponent<XRGrabInteractable>();
+
+
     }
 
    
@@ -101,8 +106,9 @@ public class BurgerPatty : MonoBehaviour
 
         StopCoroutine(CookBurger());
         isCooked = true;
-        xrGrab.interactionLayers = cookedPatty;
-        indgredientSocket.SetActive(true);
+        xrGrabInteractable.interactionLayers = xrcookedPatty;
+        
+        ingredientSocket.SetActive(true);
       
 
 

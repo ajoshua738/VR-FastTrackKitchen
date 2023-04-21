@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Griddle
   - BurgerPatty
+  - Fluid
+  - RawBurgerPatty
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - UI
   - BurgerGriddle
   - CookedBurgerPatty
+  - RawBurgerPatty
+  - Plate
   - 
-  - 
-  - 
-  - 
-  - 
+  - TopBurgerBun
+  - BottomBurgerBun
   - 
   - 
   - 
