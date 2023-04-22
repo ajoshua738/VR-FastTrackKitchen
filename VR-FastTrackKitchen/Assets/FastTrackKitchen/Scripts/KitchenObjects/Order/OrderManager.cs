@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class OrderManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class OrderManager : MonoBehaviour
 
 
     public TMP_Text orderText;
+    public Image orderImage;
 
     private void Awake()
     {
@@ -228,10 +230,12 @@ public class OrderManager : MonoBehaviour
             orderText.text = "Recipe: " + firstOrder.recipeSO.recipeName + "\n"
                             + "Satisfaction: " + firstOrder.customerSatisfaction.ToString("0.00") + "\n"
                             + "Time: " + firstOrder.orderTime.ToString("0.0");
+            orderImage.sprite = firstOrder.recipeSO.recipeSprite;
         }
         else
         {
-            orderText.text = "No orders";
+            orderText.text = null;
+            orderImage.sprite = null;
         }
 
     }

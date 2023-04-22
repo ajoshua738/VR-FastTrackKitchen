@@ -7,4 +7,5 @@ public class IngredientSO : ScriptableObject
 {
     public GameObject prefab;
     public string indgredientName;
+    
 }

@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357256391093604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9801, y: 0.839, z: -2.644}
+  m_LocalPosition: {x: -1.9801, y: 0.8362, z: -2.644}
   m_LocalScale: {x: 0.6, y: 1, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: -8216964241485958412}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -244,8 +245,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16498196, y: 0.01, z: 0.16498725}
-  m_Center: {x: 0.00016916543, y: 0.005, z: -0.00038189813}
+  m_Size: {x: 0.16498196, y: 0.006041527, z: 0.16498724}
+  m_Center: {x: 0.00016916543, y: 0.001, z: -0.00038187328}
 --- !u!114 &6248148743927009475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4452970274675661403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -316,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4452970275043863764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0034, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0033, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.01, z: 0.16666667}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -341,7 +342,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 336
+    m_Bits: 2384
   m_AttachTransform: {fileID: 4452970274675661400}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}

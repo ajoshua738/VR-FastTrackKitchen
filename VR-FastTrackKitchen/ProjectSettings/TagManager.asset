@@ -9,6 +9,7 @@ TagManager:
   - Fluid
   - RawBurgerPatty
   - AI
+  - Knife
   layers:
   - Default
   - TransparentFX
@@ -26,9 +27,9 @@ TagManager:
   - Hands
   - Bell
   - Order Plate Zone
-  - 
-  - 
-  - 
+  - Knife
+  - Tomato
+  - Cabbage
   - 
   - 
   - 
