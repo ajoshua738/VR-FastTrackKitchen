@@ -7,42 +7,45 @@ public class TableBell : MonoBehaviour
 {
    
     public UnityEvent onPress;
-    float timer = 0;
-    GameObject hands;
+    float timer = 0.0f;
+  
   
     AudioSource sound;
-    bool isPressed;
+    bool canBePressed;
     // Start is called before the first frame update
     void Start()
     {
         sound = GetComponent<AudioSource>();
-        isPressed = false;
+        canBePressed = false;
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (!isPressed)
+        if (canBePressed)
         {
-           
-           
+            canBePressed = false;
             sound.Play();
             onPress.Invoke();
-            isPressed = true;
+          
 
         }
     }
 
    
+
+
     // Update is called once per frame
     void Update()
     {
+       
         timer += Time.deltaTime;
-        if(timer > 2)
+        if(timer > 3.0f)
         {
-            timer = 0;
-            isPressed = false;
+            canBePressed = true;
+            timer = 0.0f;
+           
         }
     }
 }
