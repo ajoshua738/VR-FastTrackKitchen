@@ -10,6 +10,9 @@ TagManager:
   - RawBurgerPatty
   - AI
   - Knife
+  - Box
+  - Trail
+  - Chair
   layers:
   - Default
   - TransparentFX

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AgentManager : MonoBehaviour
 {
-    public GameObject[] seats;
-    GameObject[] agents;
-    // Use this for initialization
-    void Start()
-    {
-        agents = GameObject.FindGameObjectsWithTag("AI");
-    }
-    // Update is called once per frame
+    public GameObject AIToSpawn; // Assign the game object to spawn in the Inspector
+    public float spawnCooldown = 1f; // Set the cooldown time in seconds
+    public Transform parent;
+    private float timeSinceLastSpawn = 0f;
+
     void Update()
     {
-        for (int i = 0; i < agents.Length; i++)
+        // Check if enough time has passed since the last spawn
+        if (Time.time - timeSinceLastSpawn > spawnCooldown)
         {
-            agents[i].GetComponent<AIControl>().agent.SetDestination(seats[i].transform.position);
+            // Spawn the object and reset the timeSinceLastSpawn variable
+            Instantiate(AIToSpawn, transform.position, Quaternion.identity,parent);
+            timeSinceLastSpawn = Time.time;
         }
     }
 }
