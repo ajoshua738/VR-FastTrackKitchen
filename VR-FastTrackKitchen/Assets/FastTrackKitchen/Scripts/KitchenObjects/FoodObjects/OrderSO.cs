@@ -9,4 +9,5 @@ public class OrderSO : ScriptableObject
     public float orderTime;
     public float customerSatisfaction = 1.0f;
     public RecipeSO recipeSO;
+    public int orderID;
 }

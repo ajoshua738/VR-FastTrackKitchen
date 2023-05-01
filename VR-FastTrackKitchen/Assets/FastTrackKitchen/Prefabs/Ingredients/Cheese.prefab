@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3207590124294557373}
   - component: {fileID: -8216964241485958412}
   - component: {fileID: 6248148743927009475}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452970274675661400}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Attach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 4452970275043863765}
   - component: {fileID: 4452970275043863771}
   - component: {fileID: 4452970275043863770}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: 'Socket '
   m_TagString: Griddle
   m_Icon: {fileID: 0}

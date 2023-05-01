@@ -17,12 +17,17 @@ public class SpawnIngredient : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        
        
-        if(!Physics.Raycast(transform.position, transform.up, out hitInfo, raycastDistance, collisionLayerMask) && timer > 2.0f)
+        if(!Physics.Raycast(transform.position, transform.up, out hitInfo, raycastDistance, collisionLayerMask))
         {
-            timer = 0.0f;
-            Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            timer += Time.deltaTime;
+            if(timer > 2.0f)
+            {
+                timer = 0.0f;
+                Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            }
+         
         }
     }
    

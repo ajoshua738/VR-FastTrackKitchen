@@ -13,6 +13,11 @@ TagManager:
   - Box
   - Trail
   - Chair
+  - CinemachineTarget
+  - NPC
+  - SeatPosition
+  - Table
+  - OrderManager
   layers:
   - Default
   - TransparentFX
@@ -33,8 +38,8 @@ TagManager:
   - Knife
   - Tomato
   - Cabbage
-  - 
-  - 
+  - Cheese
+  - Chair
   - 
   - 
   - 

@@ -7,12 +7,10 @@ using UnityEngine.UI;
 
 public class OrderManager : MonoBehaviour
 {
+    //Order Related Parameters
     [SerializeField] private RecipeListSO recipeListSO;
-  
     public List<OrderSO> newOrderSOList;
     public List<OrderSO> completedOrderSOList;
-    //[SerializeField] private float minTime = 30.0f;
-    //[SerializeField] private float maxTime = 180.0f;
     [SerializeField] private float orderTime = 60.0f;
 
     private float spawnOrderTimer = 0;
@@ -21,14 +19,18 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private int maximumOrders = 4;
     [SerializeField] private int maxOrdersList = 1;
     private int orderCount = 0;
+    private int orderID = 0;
+    //--------------------------------------------------------
 
-    //public Plate plate;
+
+    //Plate related parameters
     public Plate plateObjectScript;
     public GameObject plateObject;
     bool isPlateInTrigger;
     public Transform sendPosition;
 
 
+    //GUI
     public TMP_Text orderText;
     public Image orderImage;
 
@@ -46,16 +48,18 @@ public class OrderManager : MonoBehaviour
     {
         plateObject.transform.position = sendPosition.position;
     }
-    void GenerateOrder()
+    public void GenerateOrder()
     {
         OrderSO newOrderSO = ScriptableObject.CreateInstance<OrderSO>();
         RecipeSO randomRecipeSO = recipeListSO.recipeSOList[Random.Range(0, recipeListSO.recipeSOList.Count)];
+        newOrderSO.orderID = orderID;
         newOrderSO.orderTime = orderTime;
         newOrderSO.customerSatisfaction = 1.0f;
         newOrderSO.recipeSO = randomRecipeSO;
         newOrderSOList.Add(newOrderSO);
 
         Debug.Log(newOrderSO.recipeSO.recipeName);
+        orderID++;
 
     }
 
@@ -205,7 +209,7 @@ public class OrderManager : MonoBehaviour
                 if (newOrderSOList.Count < maxOrdersList)
                 {
                     orderCount++;
-                    GenerateOrder();
+                    //GenerateOrder();
                 }
             }
         }
@@ -227,7 +231,8 @@ public class OrderManager : MonoBehaviour
         {
             CalculateCustomerSatisfaction();
             OrderSO firstOrder = newOrderSOList[0];
-            orderText.text = "Recipe: " + firstOrder.recipeSO.recipeName + "\n"
+            orderText.text = "Order ID : "+firstOrder.orderID+"\n"
+                            +"Recipe: " + firstOrder.recipeSO.recipeName + "\n"
                             + "Satisfaction: " + firstOrder.customerSatisfaction.ToString("0.00") + "\n"
                             + "Time: " + firstOrder.orderTime.ToString("0.0");
             orderImage.sprite = firstOrder.recipeSO.recipeSprite;
