@@ -38,6 +38,8 @@ public class OrderManager : MonoBehaviour
 
     public static OrderManager instance;
 
+    public AudioSource newOrderSound;
+
    
   
     private void Awake()
@@ -75,6 +77,7 @@ public class OrderManager : MonoBehaviour
 
         Debug.Log(newOrderSO.recipeSO.recipeName);
         orderID++;
+        newOrderSound.Play();
 
     }
 
