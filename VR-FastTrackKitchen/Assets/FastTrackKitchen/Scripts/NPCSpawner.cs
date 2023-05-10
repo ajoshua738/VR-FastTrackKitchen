@@ -42,18 +42,7 @@ public class NPCSpawner : MonoBehaviour
         Instantiate(npc,spawnPoint.position,Quaternion.identity);
         spawnedNPCs.Add(npc);
 
-        // Get a reference to the OrderManager script
-        OrderManager orderManager = FindObjectOfType<OrderManager>();
-        if (orderManager != null)
-        {
-            npc.GetComponent<NPCMovement>().onOrder.AddListener(orderManager.GenerateOrder);
-        }
-        else
-        {
-            Debug.LogError("OrderManager not found in scene!");
-        }
-        // Connect the onOrder event to the GenerateOrder method of the OrderManager script
-        npc.GetComponent<NPCMovement>().onOrder.AddListener(orderManager.GenerateOrder);
+       
     }
 
     

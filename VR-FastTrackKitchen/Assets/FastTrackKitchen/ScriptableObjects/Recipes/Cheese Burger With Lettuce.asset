@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f6028dd0f73ef4b9eca591a8a60346, type: 3}
   m_Name: Cheese Burger With Lettuce
   m_EditorClassIdentifier: 
-  ingredientsSOList: []
-  recipeName: 
-  recipeSprite: {fileID: 0}
+  ingredientsSOList:
+  - {fileID: 11400000, guid: 2516f00399466034ead7c3928d7fd7d3, type: 2}
+  - {fileID: 11400000, guid: ab6e70a8f703aeb42b94c70ac3c094d8, type: 2}
+  - {fileID: 11400000, guid: 3ac1073aa49655c47bd1a4bc3d8a2857, type: 2}
+  - {fileID: 11400000, guid: 1db527092edae9a40bbdba41cd14f42b, type: 2}
+  - {fileID: 11400000, guid: c35caf60ec015244da3d3250175eb654, type: 2}
+  recipeName: Cheese Burger Lettuce
+  recipeSprite: {fileID: 21300000, guid: 2ef3036695f535244a776aeb7480e8b3, type: 3}

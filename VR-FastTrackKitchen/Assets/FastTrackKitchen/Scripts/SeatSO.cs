@@ -7,4 +7,5 @@ public class SeatSO : ScriptableObject
 {
     public int seatNum;
     public Transform seatAttach;
+    public Transform plateAttach;
 }

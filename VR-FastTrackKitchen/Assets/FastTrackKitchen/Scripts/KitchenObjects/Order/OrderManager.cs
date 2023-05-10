@@ -27,28 +27,38 @@ public class OrderManager : MonoBehaviour
     public Plate plateObjectScript;
     public GameObject plateObject;
     bool isPlateInTrigger;
-    public Transform sendPosition;
+    
 
 
     //GUI
     public TMP_Text orderText;
-    public Image orderImage;
+    public Image orderFoodImage;
+    public Image orderEmojiImage;
+    public List<Sprite> customerEmoji;
 
+    public static OrderManager instance;
+
+   
+  
     private void Awake()
     {
+        instance = this;
         newOrderSOList = new List<OrderSO>();
+        
     }
 
     void Start()
     {
         isPlateInTrigger = false;
+      
     }
 
     public void SendOrder()
     {
-        plateObject.transform.position = sendPosition.position;
+        plateObject.transform.position = newOrderSOList[0].platePosition.position;
+        newOrderSOList.RemoveAt(0);
     }
-    public void GenerateOrder()
+    public void GenerateOrder(Transform platePos)
     {
         OrderSO newOrderSO = ScriptableObject.CreateInstance<OrderSO>();
         RecipeSO randomRecipeSO = recipeListSO.recipeSOList[Random.Range(0, recipeListSO.recipeSOList.Count)];
@@ -56,6 +66,11 @@ public class OrderManager : MonoBehaviour
         newOrderSO.orderTime = orderTime;
         newOrderSO.customerSatisfaction = 1.0f;
         newOrderSO.recipeSO = randomRecipeSO;
+        
+        newOrderSO.platePosition = platePos;
+    
+        
+       
         newOrderSOList.Add(newOrderSO);
 
         Debug.Log(newOrderSO.recipeSO.recipeName);
@@ -81,15 +96,15 @@ public class OrderManager : MonoBehaviour
 
         float satisfactionPercentage = timeLeft / maxTime;
 
-        if (satisfactionPercentage >= 0.7f)
+        if (satisfactionPercentage > 0.7f)
         {
             newOrderSOList[0].customerSatisfaction = 1.0f;
         }
-        else if (satisfactionPercentage >= 0.45f && satisfactionPercentage < 0.7f)
+        else if (satisfactionPercentage >= 0.4f)
         {
             newOrderSOList[0].customerSatisfaction = 0.69f;
         }
-        else if (satisfactionPercentage >= 0.01f && satisfactionPercentage < 0.45f)
+        else if (satisfactionPercentage > 0.0f)
         {
             newOrderSOList[0].customerSatisfaction = 0.44f;
         }
@@ -100,7 +115,7 @@ public class OrderManager : MonoBehaviour
         }
 
         completedOrderSOList.Add(newOrderSOList[0]);
-        newOrderSOList.RemoveAt(0);
+       
   
 
     }
@@ -112,20 +127,24 @@ public class OrderManager : MonoBehaviour
         float maxTime = orderTime;
         float satisfactionPercentage = timeLeft / maxTime;
 
-        if (satisfactionPercentage >= 0.6f)
+        if (satisfactionPercentage > 0.7f)
         {
             newOrderSOList[0].customerSatisfaction = 1.0f;
+            
         }
-        else if (satisfactionPercentage >= 0.3f && satisfactionPercentage < 0.6f)
+        else if (satisfactionPercentage >= 0.4f)
         {
             newOrderSOList[0].customerSatisfaction = 0.69f;
+           
         }
-        else if (satisfactionPercentage > 0.2f && satisfactionPercentage < 0.3f)
+        else if (satisfactionPercentage > 0.0f)
         {
             newOrderSOList[0].customerSatisfaction = 0.44f;
+            
         }
         else
         {
+           
             newOrderSOList[0].customerSatisfaction = 0.0f;
             completedOrderSOList.Add(newOrderSOList[0]);
             newOrderSOList.RemoveAt(0);
@@ -134,8 +153,8 @@ public class OrderManager : MonoBehaviour
 
 
 
-        Debug.Log("Order Time : " + timeLeft);
-        Debug.Log("Customer Satisfaction : " + satisfactionPercentage);
+        //Debug.Log("Order Time : " + timeLeft);
+        //Debug.Log("Customer Satisfaction : " + satisfactionPercentage);
 
     }
 
@@ -197,51 +216,90 @@ public class OrderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnOrderTimer -= Time.deltaTime;
+        //spawnOrderTimer -= Time.deltaTime;
 
-        if (orderCount < maximumOrders)
-        {
-            
-            if (spawnOrderTimer <= 0f)
-            {
-                spawnOrderTimer = spawnOrderTimerMax;
+        //if (orderCount < maximumOrders)
+        //{
 
-                if (newOrderSOList.Count < maxOrdersList)
-                {
-                    orderCount++;
-                    //GenerateOrder();
-                }
-            }
-        }
+        //    if (spawnOrderTimer <= 0f)
+        //    {
+        //        spawnOrderTimer = spawnOrderTimerMax;
+
+        //        if (newOrderSOList.Count < maxOrdersList)
+        //        {
+        //            orderCount++;
+        //            GenerateOrder();
+        //        }
+        //    }
+        //}
 
 
         // decrease orderTime for each OrderSO in the list
-        foreach (OrderSO order in newOrderSOList)
+        //foreach (OrderSO order in newOrderSOList)
+        //{
+        //    order.orderTime -= Time.deltaTime;
+
+        //}
+
+        if(newOrderSOList.Count > 0)
         {
-            order.orderTime -= Time.deltaTime;
-            if (order.orderTime <= 0.0f)
-            {
-                newOrderSOList.RemoveAt(0);
-            }
+            newOrderSOList[0].orderTime -= Time.deltaTime;
         }
+        
 
         
 
         if (newOrderSOList.Count > 0)
         {
             CalculateCustomerSatisfaction();
-            OrderSO firstOrder = newOrderSOList[0];
-            orderText.text = "Order ID : "+firstOrder.orderID+"\n"
-                            +"Recipe: " + firstOrder.recipeSO.recipeName + "\n"
-                            + "Satisfaction: " + firstOrder.customerSatisfaction.ToString("0.00") + "\n"
-                            + "Time: " + firstOrder.orderTime.ToString("0.0");
-            orderImage.sprite = firstOrder.recipeSO.recipeSprite;
+           
+         
+            
+            FoodUIManager();
+
+
+        }
+      
+
+    }
+
+    public void FoodUIManager()
+    {
+        OrderSO firstOrder = newOrderSOList[0];
+        if (newOrderSOList.Count > 0)
+        {
+
+
+            orderText.text = "Order ID : " + firstOrder.orderID + "\n"
+                             + "Recipe: " + firstOrder.recipeSO.recipeName + "\n"
+                             + "Satisfaction: " + firstOrder.customerSatisfaction.ToString("0.00") + "\n"
+                             + "Time: " + firstOrder.orderTime.ToString("0.0");
+            orderFoodImage.sprite = firstOrder.recipeSO.recipeSprite;
+
+
+            if (firstOrder.customerSatisfaction == 1.0f)
+            {
+                orderEmojiImage.sprite = customerEmoji[0];
+            }
+            else if (firstOrder.customerSatisfaction == 0.69f)
+            {
+                orderEmojiImage.sprite = customerEmoji[1];
+            }
+            else if (firstOrder.customerSatisfaction == 0.44f)
+            {
+                orderEmojiImage.sprite = customerEmoji[2];
+            }
+            else
+            {
+                orderEmojiImage.sprite = customerEmoji[3];
+            }
         }
         else
         {
             orderText.text = null;
-            orderImage.sprite = null;
+            orderFoodImage.sprite = null;
+            orderEmojiImage.sprite = null;
         }
-
+        
     }
 }
