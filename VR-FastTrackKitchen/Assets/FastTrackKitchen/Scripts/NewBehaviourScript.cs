@@ -7,7 +7,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public void LoadRestaurantScene()
     {
-        SceneManager.LoadScene("Restaurant");
+        SceneManager.LoadScene("Restaurant Song Test");
     }
 
     public Transform camTransform;

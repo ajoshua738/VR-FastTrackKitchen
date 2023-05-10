@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = vegeChop;
+        musicSource.clip = custLeave;
         musicSource.Play();
     }
 
