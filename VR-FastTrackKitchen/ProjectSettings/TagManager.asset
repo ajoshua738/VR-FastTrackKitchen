@@ -18,6 +18,7 @@ TagManager:
   - SeatPosition
   - Table
   - OrderManager
+  - PlatePosition
   layers:
   - Default
   - TransparentFX

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25e3edcdaa2620429e1bb7a426244ae, type: 3}
   m_Name: CookedPatty
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1717855851672710, guid: 9f2bff547fdcd094a9e9dc6154006de6, type: 3}
+  prefab: {fileID: 4145850241661305612, guid: ba4d2e56bea0ec44981b1f4397921cc8, type: 3}
   indgredientName: Cooked Patty

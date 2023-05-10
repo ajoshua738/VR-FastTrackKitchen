@@ -17,9 +17,11 @@ public class NPCMovement : MonoBehaviour
 
     public string chairTag;
 
-    public UnityEvent onOrder;
+    
 
     public bool isSeated = false;
+    public Transform platePos;
+   
  
     // Start is called before the first frame update
     void Start()
@@ -28,12 +30,7 @@ public class NPCMovement : MonoBehaviour
         availableSeats = NPCSpawner.instance.availableSeats;
         SetPosition();
 
-        GameObject orderManager = GameObject.FindGameObjectWithTag("OrderManager");
-        if (orderManager != null)
-        {
-            OrderManager orderManagerScript = orderManager.GetComponent<OrderManager>();
-            onOrder.AddListener(orderManagerScript.GenerateOrder);
-        }
+      
 
     }
 
@@ -67,8 +64,11 @@ public class NPCMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
+
         if (other.gameObject.GetInstanceID() == seatPos.gameObject.GetInstanceID())
         {
+            
             Debug.Log("IN TRIGGER ENTER");
             agent.isStopped = true;
             animator.SetBool("Walk", false);
@@ -77,11 +77,34 @@ public class NPCMovement : MonoBehaviour
             transform.rotation = seatPos.rotation;
             isSeated = true;
             // Call the onOrder event
-            onOrder.Invoke();
+
+            for (int i = 0; i < seatPos.childCount; i++)
+            {
+                Transform child = seatPos.GetChild(i);
+                if (child.CompareTag("PlatePosition"))
+                {
+                    platePos = child;
+                    break;
+                }
+            }
+
+           
+
+            StartCoroutine(Order());
+
 
         }
 
       
+    }
+
+    IEnumerator Order()
+    {
+        yield return new WaitForSeconds(3); // Wait for 3 seconds
+        OrderManager.instance.GenerateOrder(platePos);
+        
+       
+
     }
 
 }

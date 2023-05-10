@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af17e6026b5e964ea2bbf2c33c05ac7, type: 3}
-  m_Name: Seat_0
+  m_Script: {fileID: 11500000, guid: a25e3edcdaa2620429e1bb7a426244ae, type: 3}
+  m_Name: Tomato
   m_EditorClassIdentifier: 
-  seatNum: 0
-  seatAttach: {fileID: 0}
+  prefab: {fileID: 1620548078181828, guid: a921d9b54318fdc498bbf66fdb3a0a4d, type: 3}
+  indgredientName: Tomato
