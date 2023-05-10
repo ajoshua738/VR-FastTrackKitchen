@@ -10,6 +10,7 @@ public class VegetableCutting : MonoBehaviour
     public int hits;
     public bool isCuttable { get; set; }
     public string knifeTag;
+    public AudioSource cuttingSound;
     
 
 
@@ -24,6 +25,7 @@ public class VegetableCutting : MonoBehaviour
     {
         if (isCuttable && other.gameObject.tag == knifeTag)
         {
+            cuttingSound.Play();
             hits++;
 
 
