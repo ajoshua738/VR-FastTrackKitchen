@@ -3,17 +3,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("---------- Audio Source ----------")]
-    [SerializeField] AudioSource musicSource;
+    [SerializeField] public AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
     [Header("---------- Audio Clip ----------")]
-    public AudioClip background;
-    public AudioClip newCust;
-    public AudioClip newOrder;
-    public AudioClip vegeChop;
-    public AudioClip burgerCook;
-    public AudioClip burgerOverCook;
-    public AudioClip custLeave;
+    public AudioClip menuBackground;
+    public AudioClip gameBackground;
 
     public static AudioManager instance;
 
@@ -32,12 +27,18 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = custLeave;
+        musicSource.clip = menuBackground;
         musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void SetMusicClip(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 }

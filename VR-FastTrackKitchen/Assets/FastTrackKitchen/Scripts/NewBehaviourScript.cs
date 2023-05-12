@@ -7,6 +7,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public void LoadRestaurantScene()
     {
+        AudioManager.instance.SetMusicClip(AudioManager.instance.gameBackground);
         SceneManager.LoadScene("Restaurant Song Test");
     }
 

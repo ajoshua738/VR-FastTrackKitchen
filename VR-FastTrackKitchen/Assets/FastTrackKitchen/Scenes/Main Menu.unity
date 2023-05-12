@@ -2773,13 +2773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 124060229}
   SFXSource: {fileID: 864996027}
-  background: {fileID: 0}
-  newCust: {fileID: 8300000, guid: 3ea0ba72a31ae3046b597e6523b8ba5b, type: 3}
-  newOrder: {fileID: 8300000, guid: 856812ee78d52f84590f1f1bf1109c80, type: 3}
-  vegeChop: {fileID: 8300000, guid: 646e33129a6fb604cb1e28fbed015093, type: 3}
-  burgerCook: {fileID: 8300000, guid: c45c5edb540517243a3ac9c2f2a32283, type: 3}
-  burgerOverCook: {fileID: 8300000, guid: 1e3a1576f4fa5d2438fe062d9b332b33, type: 3}
-  custLeave: {fileID: 8300000, guid: 4663b3a4b7751e04d81dff71b1d718c7, type: 3}
+  menuBackground: {fileID: 8300000, guid: 92bcd48f3da676f40a4bf4a893f238cf, type: 3}
+  gameBackground: {fileID: 8300000, guid: a4f79e7f1c9361842a9ebd2882df5963, type: 3}
 --- !u!4 &285022703
 Transform:
   m_ObjectHideFlags: 0
@@ -14058,7 +14053,7 @@ PrefabInstance:
     - target: {fileID: 2887602673916096174, guid: efb2572becf9bde44abc129a46072082,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8323039808065707248, guid: efb2572becf9bde44abc129a46072082,
         type: 3}
