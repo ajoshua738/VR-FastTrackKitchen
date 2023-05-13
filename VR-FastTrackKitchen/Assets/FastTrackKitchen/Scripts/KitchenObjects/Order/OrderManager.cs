@@ -40,12 +40,14 @@ public class OrderManager : MonoBehaviour
     public static OrderManager instance;
 
     public AudioSource newOrderSound;
+    public AudioSource customerLeave;
 
     //public Transform sendPos;
 
     public List<GameObject> platePositionList;
-    
-  
+
+   
+
     private void Awake()
     {
         instance = this;
@@ -57,6 +59,7 @@ public class OrderManager : MonoBehaviour
     void Start()
     {
         isPlateInTrigger = false;
+        
       
       
     }
@@ -92,7 +95,7 @@ public class OrderManager : MonoBehaviour
     }
 
     //Called when user ready to serve
-    public void ConfirmScore()
+    public void ConfirmScore(bool correctOrder)
     {
         //Happy - >= 80
         //OK - >= 50
@@ -128,6 +131,15 @@ public class OrderManager : MonoBehaviour
 
         }
 
+        if (correctOrder)
+        {
+            newOrderSOList[0].isCorrectOrder = true;
+        }
+        else
+        {
+            newOrderSOList[0].isCorrectOrder = true;
+        }
+
         StartCoroutine(LeaveTimer(leaveTime));
 
         
@@ -160,7 +172,8 @@ public class OrderManager : MonoBehaviour
         float timeLeft = newOrderSOList[0].orderTime;
         float maxTime = orderTime;
         float satisfactionPercentage = timeLeft / maxTime;
-    
+        float leaveTime = 5.0f;
+
 
         if (satisfactionPercentage > 0.7f)
         {
@@ -183,8 +196,11 @@ public class OrderManager : MonoBehaviour
             newOrderSOList[0].customerSatisfaction = 0.0f;
             completedOrderSOList.Add(newOrderSOList[0]);
             newOrderSOList.RemoveAt(0);
-          
-            NPCMovement.instance.Leave(0.0f);
+            leaveTime = 0.0f;
+            StartCoroutine(LeaveTimer(leaveTime));
+            customerLeave.Play();
+
+
         }
 
         
@@ -211,12 +227,12 @@ public class OrderManager : MonoBehaviour
 
             if (hasAllIngredients)
             {
-                ConfirmScore(); //Correct order
+                ConfirmScore(true); //Correct order
                 SendOrder();
             }
             else
             {
-                ConfirmScore(); //Wrong order (wrong requirements)
+                ConfirmScore(false); //Wrong order (wrong requirements)
                 SendOrder();
             }
         }
@@ -298,6 +314,41 @@ public class OrderManager : MonoBehaviour
         }
       
 
+    }
+
+    public void CalculateScore()
+    {
+        float score = 0.0f;
+        foreach (OrderSO order in completedOrderSOList)
+        {
+            if(order.customerSatisfaction == 1.0f)
+            {
+                score += 50.0f;
+            }
+            else if(order.customerSatisfaction == 0.69f)
+            {
+                score += 25.0f;
+            }
+            else if (order.customerSatisfaction == 0.44f)
+            {
+                score += 00.0f;
+            }
+            else
+            {
+                score -= 50.0f;
+            }
+
+
+            if (order.isCorrectOrder)
+            {
+                score += 25.0f;
+            }
+            else
+            {
+                score -= 25.0f;
+            }
+        }
+        Debug.Log("Score : " + score);
     }
 
     public void FoodUIManager()

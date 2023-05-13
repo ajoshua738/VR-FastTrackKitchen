@@ -32,7 +32,7 @@ public class Waiter : MonoBehaviour
     public void MoveToCustomer()
     {
         //sendPoint.position = OrderManager.instance.newOrderSOList[0].platePosition.position;
-        animator.SetBool("Carry", true);
+        agent.isStopped = false;
         animator.SetBool("Walk", true);
         agent.destination = sendPoint.position;
         isSendingFood = true;
@@ -45,6 +45,7 @@ public class Waiter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!hasSendPoint)
         {
             if(OrderManager.instance.newOrderSOList.Count > 0)
@@ -54,37 +55,41 @@ public class Waiter : MonoBehaviour
             }
         }
 
-        if (isSendingFood && agent.remainingDistance <=agent.stoppingDistance)
+        if (isSendingFood && agent.remainingDistance <= 1.5f)
         {
             agent.isStopped = true;
             animator.SetBool("Walk", false);
-            animator.SetBool("Carry", false);
-            returnToIdle = true;
-            isSendingFood = false;
+
+            timer += Time.deltaTime;
+            if (timer > 2)
+            {
+                returnToIdle = true;
+                isSendingFood = false;
+                timer = 0;
+            }
+          
         }
 
         if (returnToIdle)
         {
-            timer += Time.deltaTime;
-            if(timer > 2)
+
+            animator.SetBool("Walk", true);
+            agent.isStopped = false;
+            agent.destination = idlePoint.position;
+
+            if (agent.remainingDistance <= 1.0f)
             {
-                agent.isStopped = false;
-                agent.destination = idlePoint.position;
-               
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    returnToIdle = false;
-                    timer = 0.0f;
-                    sendPoint = null;
-                    hasSendPoint = false;
-                    waiterPlate.SetActive(false);
-                }
+                animator.SetBool("Walk", false);
+                returnToIdle = false;
+                timer = 0.0f;
+                sendPoint = null;
+                hasSendPoint = false;
+                waiterPlate.SetActive(false);
+                agent.isStopped = true;
             }
 
-           
-           
-           
-            
+
+
         }
 
        

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCSpawner : MonoBehaviour
 {
@@ -14,9 +15,12 @@ public class NPCSpawner : MonoBehaviour
 
     float timer = 0;
     public float spawnTimer = 10.0f;
-    public float maxNPCs; //overall max number of npcs that should spawn in a level
-    public float totalNPCs; // total npcs that can be in the scene
-    public float npcCount = 0;
+    public int maxNPCs; //overall max number of npcs that should spawn in a level
+    public int totalNPCs; // total npcs that can be in the scene
+    public int npcCount = 0;
+
+    public UnityEvent onCompleteLevel;
+    bool isCalled = false;
 
     public static NPCSpawner instance;
     private void Awake()
@@ -32,6 +36,7 @@ public class NPCSpawner : MonoBehaviour
 
         availableSeats = GameObject.FindGameObjectsWithTag("SeatPosition").Select(c => c.transform).ToList();
         
+
 
 
     }
@@ -66,6 +71,12 @@ public class NPCSpawner : MonoBehaviour
                 SpawnNPC();
             }
             
+        }
+
+        if(npcCount >= maxNPCs && spawnedNPCs.Count <=0 && !isCalled)
+        {
+            onCompleteLevel.Invoke();
+            isCalled = true;
         }
     }
 }

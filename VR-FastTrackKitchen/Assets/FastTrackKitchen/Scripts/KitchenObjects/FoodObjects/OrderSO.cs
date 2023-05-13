@@ -11,4 +11,5 @@ public class OrderSO : ScriptableObject
     public RecipeSO recipeSO;
     public int orderID;
     public Transform platePosition;
+    public bool isCorrectOrder;
 }
