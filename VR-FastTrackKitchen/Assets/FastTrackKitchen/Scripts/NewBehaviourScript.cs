@@ -7,7 +7,8 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public void LoadRestaurantScene()
     {
-        SceneManager.LoadScene("Restaurant");
+        AudioManager.instance.SetMusicClip(AudioManager.instance.gameBackground);
+        SceneManager.LoadScene("Restaurant Song Test");
     }
 
     public Transform camTransform;
