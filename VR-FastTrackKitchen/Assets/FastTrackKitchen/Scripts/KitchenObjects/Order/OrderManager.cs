@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -40,12 +41,16 @@ public class OrderManager : MonoBehaviour
 
     public AudioSource newOrderSound;
 
-   
+    //public Transform sendPos;
+
+    public List<GameObject> platePositionList;
+    
   
     private void Awake()
     {
         instance = this;
         newOrderSOList = new List<OrderSO>();
+        platePositionList = new List<GameObject>();
         
     }
 
@@ -53,13 +58,18 @@ public class OrderManager : MonoBehaviour
     {
         isPlateInTrigger = false;
       
+      
     }
+
 
     public void SendOrder()
     {
         plateObject.transform.position = newOrderSOList[0].platePosition.position;
+    
         newOrderSOList.RemoveAt(0);
     }
+
+    
     public void GenerateOrder(Transform platePos)
     {
         OrderSO newOrderSO = ScriptableObject.CreateInstance<OrderSO>();
@@ -70,7 +80,7 @@ public class OrderManager : MonoBehaviour
         newOrderSO.recipeSO = randomRecipeSO;
         
         newOrderSO.platePosition = platePos;
-    
+        //sendPos = platePos;
         
        
         newOrderSOList.Add(newOrderSO);
@@ -93,7 +103,7 @@ public class OrderManager : MonoBehaviour
         //float scoreOK;
         //float scoreUpset;
         //float scoreAngry;
-
+        float leaveTime = 5.0f;
         float timeLeft = newOrderSOList[0].orderTime;
         float maxTime = orderTime;
 
@@ -114,13 +124,34 @@ public class OrderManager : MonoBehaviour
         else
         {
             newOrderSOList[0].customerSatisfaction = 0.0f;
+            leaveTime = 0.0f;
 
         }
+
+        StartCoroutine(LeaveTimer(leaveTime));
+
+        
+        
+        //NPCMovement.instance.Leave(leaveTime);
 
         completedOrderSOList.Add(newOrderSOList[0]);
        
   
 
+    }
+
+    
+
+    public IEnumerator LeaveTimer(float timer)
+    {
+        GameObject firstNPC = NPCSpawner.instance.spawnedNPCs[0];
+        NPCMovement npcMove = firstNPC.GetComponent<NPCMovement>();
+        NPCLeave npcLeave = firstNPC.GetComponent<NPCLeave>();
+        yield return new WaitForSeconds(timer);
+        //npcMove.isSeated = false;
+
+        npcMove.enabled = false;
+        npcLeave.enabled = true;
     }
 
     //To display in UI/Update
@@ -129,6 +160,7 @@ public class OrderManager : MonoBehaviour
         float timeLeft = newOrderSOList[0].orderTime;
         float maxTime = orderTime;
         float satisfactionPercentage = timeLeft / maxTime;
+    
 
         if (satisfactionPercentage > 0.7f)
         {
@@ -151,9 +183,11 @@ public class OrderManager : MonoBehaviour
             newOrderSOList[0].customerSatisfaction = 0.0f;
             completedOrderSOList.Add(newOrderSOList[0]);
             newOrderSOList.RemoveAt(0);
+          
+            NPCMovement.instance.Leave(0.0f);
         }
 
-
+        
 
 
         //Debug.Log("Order Time : " + timeLeft);

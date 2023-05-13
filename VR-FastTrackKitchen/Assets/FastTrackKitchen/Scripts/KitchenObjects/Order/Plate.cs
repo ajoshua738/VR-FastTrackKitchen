@@ -6,14 +6,27 @@ public class Plate : MonoBehaviour
 {
     public List<IngredientSO> ingredientsOnPlate;
 
+    public bool destroy = false;
+
+    public static Plate instance;
+
     private void Awake()
     {
+        instance = this;
         ingredientsOnPlate = new List<IngredientSO>();
     }
 
    
 
+    public void DestroyObject()
+    {
+        for(int i =0; i < ingredientsOnPlate.Count; i++)
+        {
+            ingredientsOnPlate.RemoveAt(i);
+        }
+        destroy = true;
 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +57,9 @@ public class Plate : MonoBehaviour
 
     private void Update()
     {
-   
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
     }
 }

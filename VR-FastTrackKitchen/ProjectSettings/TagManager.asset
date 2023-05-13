@@ -19,6 +19,9 @@ TagManager:
   - Table
   - OrderManager
   - PlatePosition
+  - Plate
+  - LeavePosition
+  - Ingredient
   layers:
   - Default
   - TransparentFX

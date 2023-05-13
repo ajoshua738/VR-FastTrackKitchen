@@ -2028,6 +2028,7 @@ GameObject:
   - component: {fileID: 7665510203951773853}
   - component: {fileID: -3148253662449705668}
   - component: {fileID: 3159996809972945770}
+  - component: {fileID: -101592521731694921}
   m_Layer: 0
   m_Name: Char2
   m_TagString: NPC
@@ -2075,22 +2076,9 @@ MonoBehaviour:
   availableSeats: []
   occupiedSeats: []
   chairTag: Chair
-  onOrder:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   isSeated: 0
+  platePos: {fileID: 0}
+  seatIndex: 0
 --- !u!95 &235999695212422816
 Animator:
   serializedVersion: 4
@@ -2163,6 +2151,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-101592521731694921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840277344699098720}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4409567c763dab4495804180c22e331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7665510203951773853}
+  leavePos: {fileID: 0}
+  animator: {fileID: 235999695212422816}
+  leaveCalled: 0
 --- !u!1 &7099264321258821239
 GameObject:
   m_ObjectHideFlags: 0
