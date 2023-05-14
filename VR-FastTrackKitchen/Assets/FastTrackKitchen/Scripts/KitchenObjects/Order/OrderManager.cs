@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+
 public class OrderManager : MonoBehaviour
 {
     //Order Related Parameters
@@ -14,12 +15,10 @@ public class OrderManager : MonoBehaviour
     public List<OrderSO> completedOrderSOList;
     [SerializeField] private float orderTime = 60.0f;
 
-    private float spawnOrderTimer = 0;
-    private float spawnOrderTimerMax = 4f;
    
-    [SerializeField] private int maximumOrders = 4;
-    [SerializeField] private int maxOrdersList = 1;
-    private int orderCount = 0;
+   
+   
+   
     private int orderID = 0;
     //--------------------------------------------------------
 
@@ -46,7 +45,17 @@ public class OrderManager : MonoBehaviour
 
     public List<GameObject> platePositionList;
 
-   
+
+    //Level Completion stuff
+    public GameObject levelScreen;
+    public int mistakes = 0;
+    public float levelTimer = 0.0f;
+    public TMP_Text timeText;
+    public TMP_Text scoreText;
+    public TMP_Text mistakesText;
+    public TMP_Text gradeText;
+
+
 
     private void Awake()
     {
@@ -58,6 +67,7 @@ public class OrderManager : MonoBehaviour
 
     void Start()
     {
+        levelScreen.SetActive(false);
         isPlateInTrigger = false;
         
       
@@ -137,7 +147,7 @@ public class OrderManager : MonoBehaviour
         }
         else
         {
-            newOrderSOList[0].isCorrectOrder = true;
+            newOrderSOList[0].isCorrectOrder = false;
         }
 
         StartCoroutine(LeaveTimer(leaveTime));
@@ -269,30 +279,7 @@ public class OrderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //spawnOrderTimer -= Time.deltaTime;
-
-        //if (orderCount < maximumOrders)
-        //{
-
-        //    if (spawnOrderTimer <= 0f)
-        //    {
-        //        spawnOrderTimer = spawnOrderTimerMax;
-
-        //        if (newOrderSOList.Count < maxOrdersList)
-        //        {
-        //            orderCount++;
-        //            GenerateOrder();
-        //        }
-        //    }
-        //}
-
-
-        // decrease orderTime for each OrderSO in the list
-        //foreach (OrderSO order in newOrderSOList)
-        //{
-        //    order.orderTime -= Time.deltaTime;
-
-        //}
+        levelTimer += Time.deltaTime;
 
         if(newOrderSOList.Count > 0)
         {
@@ -319,6 +306,7 @@ public class OrderManager : MonoBehaviour
     public void CalculateScore()
     {
         float score = 0.0f;
+        string grade = "A";
         foreach (OrderSO order in completedOrderSOList)
         {
             if(order.customerSatisfaction == 1.0f)
@@ -346,9 +334,41 @@ public class OrderManager : MonoBehaviour
             else
             {
                 score -= 25.0f;
+                mistakes++;
             }
         }
+
+        score -= mistakes * 25.0f;
+
+
+        if (score >= 375.0f)
+        {
+            grade = "A";
+        }
+        else if (score >= 225.0f && score < 375.0f)
+        {
+            grade = "B";
+        }
+        else if (score >= 75.0f && score < 225.0f)
+        {
+            grade = "C";
+        }
+        else if (score >= 0.0f && score < 75.0f)
+        {
+            grade = "D";
+        }
+        else
+        {
+            grade = "FAIL";
+        }
+
+
         Debug.Log("Score : " + score);
+        timeText.text = levelTimer.ToString("F0");
+        scoreText.text = ""+score;
+        mistakesText.text = "" + mistakes;
+        gradeText.text = "" + grade;
+        levelScreen.SetActive(true);
     }
 
     public void FoodUIManager()
@@ -360,7 +380,7 @@ public class OrderManager : MonoBehaviour
 
             orderText.text = "Order ID : " + firstOrder.orderID + "\n"
                              + "Recipe: " + firstOrder.recipeSO.recipeName + "\n"
-                             + "Satisfaction: " + firstOrder.customerSatisfaction.ToString("0.00") + "\n"
+                             + "Satisfaction: " + "\n"
                              + "Time: " + firstOrder.orderTime.ToString("0.0");
             orderFoodImage.sprite = firstOrder.recipeSO.recipeSprite;
 

@@ -18,8 +18,9 @@ public class BurgerPatty : MonoBehaviour
     private XRGrabInteractable xrGrabInteractable;
    
 
-    [SerializeField] private InteractionLayerMask xrcookedPatty;
-   
+    [SerializeField] private InteractionLayerMask xrCookedPatty;
+    [SerializeField] private InteractionLayerMask xrBurntPatty;
+
     //Material lerping handling
     [SerializeField] private float cookTime = 10.0f;
     private float increment;
@@ -31,10 +32,12 @@ public class BurgerPatty : MonoBehaviour
     private AudioSource cookingSound;
     private Material material;
     private Renderer renderer;
+    public Material burntMat;
+    public AudioClip burntSound;
 
     [SerializeField] private GameObject ingredientSocket;
- 
 
+    float burn = 0.0f;
     // Start is called before the first frame update
  
     void Start()
@@ -71,13 +74,22 @@ public class BurgerPatty : MonoBehaviour
             }
             else
             {
-                
+
+
                 yield return null; // pause the coroutine until isCooking is true again
             }
+
+
         }
         Debug.Log("burnt");
         isBurnt = true;
-        StopCoroutine(OverCooking());
+        ingredientSocket.SetActive(false);
+        xrGrabInteractable.interactionLayers = xrBurntPatty;
+        renderer.material = burntMat;
+        cookingSound.clip = burntSound;
+        cookingSound.Play();
+        OrderManager.instance.mistakes++;
+        //StopCoroutine(OverCooking());
     }
     private IEnumerator CookBurger()
     {
@@ -104,9 +116,9 @@ public class BurgerPatty : MonoBehaviour
 
         }
 
-        StopCoroutine(CookBurger());
+        //StopCoroutine(CookBurger());
         isCooked = true;
-        xrGrabInteractable.interactionLayers = xrcookedPatty;
+        xrGrabInteractable.interactionLayers = xrCookedPatty;
         
         ingredientSocket.SetActive(true);
       
@@ -154,6 +166,16 @@ public class BurgerPatty : MonoBehaviour
         else
         {
             cookingSound.Stop();
+        }
+
+        if (isBurnt)
+        {
+            burn += Time.deltaTime;
+
+            if(burn > 3)
+            {
+                Destroy(gameObject);
+            }
         }
         
 
