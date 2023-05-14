@@ -2902,6 +2902,12 @@ PrefabInstance:
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1754806788262979411, guid: 6d4a8614e3c1bcb46b49259460e0cb5f,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -4062344308839664720, guid: f60117ae3b79aa34fb305850c2911159,
+        type: 2}
     - target: {fileID: 2292589515832077693, guid: 6d4a8614e3c1bcb46b49259460e0cb5f,
         type: 3}
       propertyPath: m_RootOrder
