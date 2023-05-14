@@ -55,7 +55,7 @@ public class OrderManager : MonoBehaviour
     public TMP_Text mistakesText;
     public TMP_Text gradeText;
 
-
+    public AudioSource winSound;
 
     private void Awake()
     {
@@ -368,6 +368,7 @@ public class OrderManager : MonoBehaviour
         scoreText.text = ""+score;
         mistakesText.text = "" + mistakes;
         gradeText.text = "" + grade;
+        winSound.Play();
         
     }
 
