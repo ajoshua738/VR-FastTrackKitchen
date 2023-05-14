@@ -606,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 1269325175278952782, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1269325175278952782, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
@@ -635,11 +635,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1269325175278952782, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Restaurant_Level_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269325175278952782, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -653,16 +648,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1269325175580198951, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269325175580198968, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1242395171}
     - target: {fileID: 1269325175580198970, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
       propertyPath: m_Enabled
@@ -717,6 +702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grade Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269325175998603585, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1269325176008751218, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
@@ -796,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 1269325176381905201, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Restaurant_Level_1
+      value: Restaurant_Level_3
       objectReference: {fileID: 0}
     - target: {fileID: 1269325176381905201, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
@@ -892,11 +882,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1269325177062716519, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee8b86eb659301c4bba7fafa15e9b0a8, type: 3}
@@ -3872,12 +3857,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e155fc4de00be94aa51ecff19c34b54, type: 3}
---- !u!20 &1242395171 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8323039808833089326, guid: efb2572becf9bde44abc129a46072082,
-    type: 3}
-  m_PrefabInstance: {fileID: 81043594}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1255147745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8098,17 +8077,17 @@ PrefabInstance:
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
       propertyPath: maxNPCs
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
       propertyPath: totalNPCs
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
       propertyPath: spawnTimer
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
