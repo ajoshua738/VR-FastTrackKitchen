@@ -5494,6 +5494,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1269325176666783318, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1269325176666783339, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
       propertyPath: m_Camera
@@ -5517,7 +5522,7 @@ PrefabInstance:
     - target: {fileID: 1269325177062716517, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1269325177062716517, guid: ee8b86eb659301c4bba7fafa15e9b0a8,
         type: 3}

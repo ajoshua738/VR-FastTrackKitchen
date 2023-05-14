@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/FastTrackKitchen/Scenes/Main Menu.unity
     guid: a53e4f13c3448814a81c90e757d8c772
   - enabled: 1
-    path: Assets/FastTrackKitchen/Scenes/Restaurant Song Test.unity
-    guid: 4fbcdc22a03d6bc4189f828291f343da
+    path: Assets/FastTrackKitchen/Scenes/RestaurantTutorial.unity
+    guid: 9248abcf84f4f774d818c16a5e98ed4d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ed72be55522c8448bae8b0d66fa21adf,
       type: 2}
