@@ -7799,7 +7799,7 @@ PrefabInstance:
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
       propertyPath: spawnTimer
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2508730629936095622, guid: 4a7ad9afce7775e4284e3741c5100bde,
         type: 3}
@@ -9916,6 +9916,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 732735899}
+    - target: {fileID: 6985177432459071629, guid: 0230f46b2c6c7b845bde50c398f8eb97,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985177432459071629, guid: 0230f46b2c6c7b845bde50c398f8eb97,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985177432459071629, guid: 0230f46b2c6c7b845bde50c398f8eb97,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985177432459071629, guid: 0230f46b2c6c7b845bde50c398f8eb97,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985177432459071629, guid: 0230f46b2c6c7b845bde50c398f8eb97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 6985177433655268248, guid: 0230f46b2c6c7b845bde50c398f8eb97,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
