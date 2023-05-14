@@ -19,7 +19,7 @@ public class NPCSpawner : MonoBehaviour
     public int totalNPCs; // total npcs that can be in the scene
     public int npcCount = 0;
 
-    public UnityEvent onCompleteLevel;
+ 
     bool isCalled = false;
 
     public static NPCSpawner instance;
@@ -75,7 +75,8 @@ public class NPCSpawner : MonoBehaviour
 
         if(npcCount >= maxNPCs && spawnedNPCs.Count <=0 && !isCalled)
         {
-            onCompleteLevel.Invoke();
+            
+            OrderManager.instance.CalculateScore();
             isCalled = true;
         }
     }

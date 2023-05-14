@@ -362,13 +362,13 @@ public class OrderManager : MonoBehaviour
             grade = "FAIL";
         }
 
-
+        levelScreen.SetActive(true);
         Debug.Log("Score : " + score);
         timeText.text = levelTimer.ToString("F0");
         scoreText.text = ""+score;
         mistakesText.text = "" + mistakes;
         gradeText.text = "" + grade;
-        levelScreen.SetActive(true);
+        
     }
 
     public void FoodUIManager()
