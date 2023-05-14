@@ -7,19 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/FastTrackKitchen/Scenes/Main Menu.unity
-    guid: a53e4f13c3448814a81c90e757d8c772
-  - enabled: 1
-    path: Assets/FastTrackKitchen/Scenes/Restaurant_Level_1.unity
-    guid: fa4ea0a7fc9a75248b6e636657ee35da
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    guid: 1463b029ec2981f4da46c40886aa093b
   - enabled: 1
     path: Assets/FastTrackKitchen/Scenes/Restaurant_Tutorial_Level.unity
     guid: 9e33495d17929914f9935c68af70d3a4
+  - enabled: 1
+    path: Assets/FastTrackKitchen/Scenes/Restaurant_Level_1.unity
+    guid: fa4ea0a7fc9a75248b6e636657ee35da
   - enabled: 1
     path: Assets/FastTrackKitchen/Scenes/Restaurant_Level_3.unity
     guid: 97318fab7498d7f4a8d924f15eab72f1

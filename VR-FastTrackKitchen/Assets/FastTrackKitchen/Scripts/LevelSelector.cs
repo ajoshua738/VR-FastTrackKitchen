@@ -9,6 +9,15 @@ public class LevelSelector : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        SceneManager.LoadScene(levelName);
+        if (levelName == "Main Menu")
+        {
+            AudioManager.instance.SetMusicClip(AudioManager.instance.menuBackground);
+            SceneManager.LoadScene(levelName);
+        }
+        else
+        {
+            SceneManager.LoadScene(levelName);
+        }
+        
     }
 }
